@@ -1,17 +1,20 @@
 name: Sync ComfyUI to Gitee
 on:
   schedule:
-    - cron: '0 */12 * * *'  # 每6小时同步一次，你可以按需修改
+    - cron: '0 */12 * * *'  # 每6小时同步一次
   workflow_dispatch:       # 允许手动触发
+
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - name: Mirror the repo
-        uses: Yikun/action-mirror@master
+        uses: Yikun/hub-mirror-action@master  # 替换为正确的 action 地址
         with:
-          src_repo: Comfy-Org/ComfyUI
+          src: github/Comfy-Org               # 源仓库的拥有者（组织名）
           dst_repo: miukoo/sync-comfyui-mirror
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
-          force_push: true
+          static_list: "ComfyUI"              # 指定要同步的仓库名
+          force_update: true                  # 强制覆盖更新
+          debug: true                         # 开启调试日志，方便排查问题
