@@ -17,4 +17,5 @@ jobs:
           dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: "ComfyUI"              # 指定要同步的仓库名
           force_update: true                  # 强制覆盖更新
+          timeout: 120m
           debug: true                         # 开启调试日志，方便排查问题
