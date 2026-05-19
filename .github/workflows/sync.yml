@@ -12,7 +12,7 @@ jobs:
         uses: Yikun/hub-mirror-action@master  # 替换为正确的 action 地址
         with:
           src: github/Comfy-Org               # 源仓库的拥有者（组织名）
-          dst: gitee/miukoo/sync-comfyui-mirror
+          dst: gitee/sync-comfyui-mirror
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: "ComfyUI"              # 指定要同步的仓库名
